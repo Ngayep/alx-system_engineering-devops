@@ -8,3 +8,4 @@ script 5listfilesdigitonly displays numerical content et al
 script to create a dir in the tmp dir
 script to move betty from tmp to myfirstdirectory
 8firstdelete is the script to delete betty
+script to delete myfirstdirectory in tmp
