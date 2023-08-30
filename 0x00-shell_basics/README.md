@@ -12,3 +12,4 @@ script to delete myfirstdirectory in tmp
 10back is the script that changes working dir to prev one
 script to listall files in long format form several dir
 script that prints the type of the file named iamafile
+script to create a symbolic link
