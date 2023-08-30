@@ -5,3 +5,4 @@ script 2bringmehome is to go to home dir
 script 3listfiles displays current dir in long format
 script 4listmorefiles displays dir content including hidden files
 script 5listfilesdigitonly displays numerical content et al
+script to create a dir in the tmp dir
