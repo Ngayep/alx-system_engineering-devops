@@ -10,3 +10,4 @@ script to move betty from tmp to myfirstdirectory
 8firstdelete is the script to delete betty
 script to delete myfirstdirectory in tmp
 10back is the script that changes working dir to prev one
+script to listall files in long format form several dir
