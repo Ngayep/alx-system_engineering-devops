@@ -15,3 +15,4 @@ script that prints the type of the file named iamafile
 script to create a symbolic link
 script to copy html files
 script moving files with uppercase
+script to clean emacs files
