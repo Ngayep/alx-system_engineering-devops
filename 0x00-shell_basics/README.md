@@ -13,3 +13,4 @@ script to delete myfirstdirectory in tmp
 script to listall files in long format form several dir
 script that prints the type of the file named iamafile
 script to create a symbolic link
+script to copy html files
