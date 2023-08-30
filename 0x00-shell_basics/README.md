@@ -18,3 +18,4 @@ script moving files with uppercase
 script to clean emacs files
 script to create 3 dir at once
 script for list of files with commas
+script for magic files
