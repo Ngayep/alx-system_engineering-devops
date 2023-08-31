@@ -7,3 +7,4 @@ this readme file describes the scripts contained in this dir
 5execute is a script adding execute to hello
 execution permission everybody, 7everybody
 new permisions to the file hello for other users
+new mode set
