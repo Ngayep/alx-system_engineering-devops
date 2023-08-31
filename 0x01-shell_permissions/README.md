@@ -6,3 +6,4 @@ this readme file describes the scripts contained in this dir
 4empty creates an empty hello file
 5execute is a script adding execute to hello
 execution permission everybody, 7everybody
+new permisions to the file hello for other users
