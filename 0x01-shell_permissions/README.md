@@ -5,3 +5,4 @@ this readme file describes the scripts contained in this dir
 3newowner changes the owner of the file
 4empty creates an empty hello file
 5execute is a script adding execute to hello
+execution permission everybody, 7everybody
