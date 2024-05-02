@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#a scrit that displays the time for 12 hours and 59 mins
+h=0
+while [ $h -lt 13 ]; do
+ 	echo "Hour: $h"
+	min=1
+	while [ $min -lt 60 ]; do
+		echo "$min"
+		((min=min+1))
+	done
+	((h=h+1))
+done
