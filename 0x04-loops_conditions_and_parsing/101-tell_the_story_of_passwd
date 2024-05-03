@@ -5,5 +5,5 @@ passwd_file="/etc/passwd"
 # Read the /etc/passwd file line by line using a while loop
 while IFS=: read -r username _ uid gid info home shell || [[ -n "$username" ]]; do
     # Print the required information
-    echo "the user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $_, more info about the user here: $info"
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $_, more info about the user here: $info"
 done < "$passwd_file"
