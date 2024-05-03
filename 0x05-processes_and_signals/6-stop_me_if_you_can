@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script that kills process without kill or killout
+
+pkill -f 4-to_infinity_and_beyond
