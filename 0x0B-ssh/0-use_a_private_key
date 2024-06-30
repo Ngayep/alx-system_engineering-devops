@@ -2,4 +2,4 @@
 
 #connects to server using the private key ~/.ssh/school
 
-ssh -i ~/.ssh/school ubuntu@54.236.28.100
+ssh -v ~/.ssh/school ubuntu@54.236.28.100
