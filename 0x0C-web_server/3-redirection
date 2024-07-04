@@ -14,8 +14,7 @@ sudo ufw allow 'Nginx HTTP'
 echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
 # Define the redirection configuration
-REDIRECT_CONFIG="location /redirect_me {\n\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}"
-
+REDIRECT_CONFIG="location /redirect_me {\n\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n}"
 # Check if the REDIRECT_CONFIG already exists in the configuration file
 if ! sudo grep -q "location /redirect_me" /etc/nginx/sites-available/default; then
     # Add the REDIRECT_CONFIG to the Nginx configuration file after server_name directive
