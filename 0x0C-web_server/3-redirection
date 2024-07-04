@@ -26,4 +26,4 @@ fi
 sudo nginx -t
 
 # Restart Nginx to apply changes
-sudo systemctl restart nginx
+sudo service restart nginx

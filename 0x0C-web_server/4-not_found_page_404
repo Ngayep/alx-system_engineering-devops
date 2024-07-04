@@ -1,23 +1,43 @@
 #!/usr/bin/env bash
-#Configure your Nginx server to have a custom 404 page that contains the string
+# Bash script to configure Nginx for a custom 404 page
 
+set -e
+
+# Update packages and install Nginx if not already installed
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# code to redirect a specific endpoint (eg: redirect /redirect_me to https://blog.ehoneahobed.com)
-# Create a simple index.html page
-echo "Hello World!" | sudo tee /var/www/html/index.html
+# Allow HTTP traffic if not already allowed
+sudo ufw allow 'Nginx HTTP'
 
-# Define the string for the redirection
-string_for_replacement="server_name _;\n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+# Create a simple index.html for testing
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
-# Update the Nginx default site configuration to include the redirection
-sudo sed -i "s|server_name _;|$string_for_replacement|" /etc/nginx/sites-available/default
+# Create the custom 404 page content
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
 
-# code to create error page and add a redirect for error 404
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-string_for_replacement="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
-sudo sed -i "s/listen 80 default_server;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+# Configure Nginx for the custom 404 page
+sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
 
-# restart the server
+    location / {
+        try_files \$uri \$uri/ =404;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+}
+EOF'
+
+# Test Nginx configuration syntax
+sudo nginx -t
+
+# Restart Nginx to apply changes
 sudo service nginx restart
