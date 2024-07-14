@@ -1,43 +1,10 @@
 #!/usr/bin/env bash
-# Bash script to configure Nginx for a custom 404 page
+# Bash script to configure Nginx for redirection
 
-set -e
-
-# Update packages and install Nginx if not already installed
-sudo apt-get update
-sudo apt-get install -y nginx
-
-# Allow HTTP traffic if not already allowed
+apt-get update -y
+apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
-
-# Create a simple index.html for testing
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-
-# Create the custom 404 page content
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
-
-# Configure Nginx for the custom 404 page
-sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
-    server_name _;
-
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-
-    error_page 404 /404.html;
-    location = /404.html {
-        internal;
-    }
-}
-EOF'
-
-# Test Nginx configuration syntax
-sudo nginx -t
-
-# Restart Nginx to apply changes
-sudo service nginx restart
+sh -c 'echo "Hello World!" > /var/www/html/index.html'
+sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/@JanekateFitness permanent;' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server/a error_page 404 /404.htnl;' /etc/nginx/sites-available/default
+service nginx restart
