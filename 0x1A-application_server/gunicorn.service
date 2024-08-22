@@ -1,0 +1,29 @@
+[Unit]
+Description=Gunicorn instance to serve AirBnB Clone
+#start after netwoork is available
+After=network.target
+
+[Service]
+#Run the service under the user named ubuntu
+User=ubuntu
+
+#set working directory
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+
+#set the path to environment file
+EnvironmentFile=/home/ubuntu/AirBnB_clone_v4/.env
+#start gunicorn with 3 workers restart if it fails
+Restart=always
+
+#redirect standard output to syslog
+StandardOutput=append:/tmp/airbnb-access.log
+
+#redirect standard error to syslog
+StandardError=append:/tmp/airbnb-error.log
+
+#identifier for syslog messages
+SyslogIdentifier=gunicorn
+
+[Install]
+#enable the service for multi-user.target
+WantedBy=multi-user.target
